@@ -2,7 +2,9 @@
 
 A stunning, modern, and fully responsive personal portfolio website built with pure HTML, CSS, and vanilla JavaScript. No frameworks required - just clean, semantic code that's easy to customize and ready to impress potential clients or employers.
 
-![Portfolio Preview](https://khamsat.hsoubcdn.com/images/profiles/1149892/f1fca4ba69e235138b6ee9cb74d056ed.jpg)
+![Portfolio Preview](assets/images
+/Screenshot_5-3-2026_23369_ahmedyehia30.github.io.jpeg
+)
 
 ## Live Demo
 
