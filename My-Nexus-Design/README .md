@@ -6,7 +6,7 @@ A fully responsive, modern agency/portfolio website built with pure HTML, CSS, a
 
 ## 🚀 Live Demo
 
-**URL:** https://jbnkqdyeuoxkm.ok.kimi.link
+**[View Live Site](https://ahmedyehia30.github.io/Projects/My-Nexus-Design/index.html)**
 
 ---
 
