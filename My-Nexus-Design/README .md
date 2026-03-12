@@ -312,12 +312,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-## 📞 Support
-
-If you encounter any issues or have questions:
-- Open an issue in the repository
-- Contact through the website contact form
-
----
-
 **Happy Coding!** 🚀
