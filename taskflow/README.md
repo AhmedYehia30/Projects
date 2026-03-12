@@ -6,7 +6,7 @@ A professional, responsive landing page for a fictional productivity startup. Bu
 
 ## Live Demo
 
-**[View Live Site](https://6xujj6xpcn7fq.ok.kimi.link)**
+**[View Live Site](https://ahmedyehia30.github.io/Projects/taskflow/index.html)**
 
 ## Features
 
@@ -130,4 +130,4 @@ Free to use for personal and commercial projects. Attribution appreciated but no
 
 ---
 
-**Built with ❤️ for productive teams**
+**Built by Ahmed**
