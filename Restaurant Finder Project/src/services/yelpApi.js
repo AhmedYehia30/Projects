@@ -4,8 +4,10 @@
 const LOCAL_PROXY_BASE =
   import.meta.env.VITE_API_PROXY_BASE ||
   (import.meta.env.DEV ? "http://localhost:4000" : "");
-const EXTERNAL_PROXY_BASE = import.meta.env.VITE_YELP_API_PROXY || "";
-const YELP_API_KEY = import.meta.env.VITE_YELP_API_KEY || "";
+const EXTERNAL_PROXY_BASE =
+  import.meta.env.VITE_YELP_API_PROXY || import.meta.env.REACT_APP_YELP_API_PROXY || "";
+const YELP_API_KEY =
+  import.meta.env.VITE_YELP_API_KEY || import.meta.env.REACT_APP_YELP_API_KEY || "";
 const YELP_BASE = "https://api.yelp.com/v3";
 const PROXY_BASE = LOCAL_PROXY_BASE;
 const HAS_LOCAL_PROXY = Boolean(LOCAL_PROXY_BASE);
