@@ -2,11 +2,13 @@
 // The proxy is expected to be running at http://localhost:4000 and expose
 // /api/search and /api/business/:id
 const LOCAL_PROXY_BASE =
-  import.meta.env.VITE_API_PROXY_BASE || "http://localhost:4000";
+  import.meta.env.VITE_API_PROXY_BASE ||
+  (import.meta.env.DEV ? "http://localhost:4000" : "");
 const EXTERNAL_PROXY_BASE = import.meta.env.VITE_YELP_API_PROXY || "";
 const YELP_API_KEY = import.meta.env.VITE_YELP_API_KEY || "";
 const YELP_BASE = "https://api.yelp.com/v3";
 const PROXY_BASE = LOCAL_PROXY_BASE;
+const HAS_LOCAL_PROXY = Boolean(LOCAL_PROXY_BASE);
 
 /**
  * Search businesses on Yelp.
@@ -40,9 +42,12 @@ export async function searchBusinesses(params = {}) {
     query.set("location", params.location);
   }
 
-  const url = `${PROXY_BASE}/api/search?${query.toString()}`;
+  const url = HAS_LOCAL_PROXY
+    ? `${PROXY_BASE}/api/search?${query.toString()}`
+    : null;
   let response;
   try {
+    if (!url) throw new Error("No local proxy configured");
     response = await fetch(url);
   } catch (err) {
     if (EXTERNAL_PROXY_BASE && YELP_API_KEY) {
@@ -71,6 +76,9 @@ export async function searchBusinesses(params = {}) {
         "Cairo default location failed; falling back to New York, NY",
       );
       query.set("location", "New York, NY");
+      if (!HAS_LOCAL_PROXY) {
+        throw new Error(`Proxy/Yelp API error ${response.status}: ${text}`);
+      }
       const fallbackUrl = `${PROXY_BASE}/api/search?${query.toString()}`;
       response = await fetch(fallbackUrl);
       text = await response.text();
@@ -93,9 +101,12 @@ export async function searchBusinesses(params = {}) {
  * @returns {Promise<Object>}
  */
 export async function getBusinessDetails(id) {
-  const url = `${PROXY_BASE}/api/business/${encodeURIComponent(id)}`;
+  const url = HAS_LOCAL_PROXY
+    ? `${PROXY_BASE}/api/business/${encodeURIComponent(id)}`
+    : null;
   let response;
   try {
+    if (!url) throw new Error("No local proxy configured");
     response = await fetch(url);
   } catch (err) {
     if (EXTERNAL_PROXY_BASE && YELP_API_KEY) {
